@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import DateChart from './DateChart'
+import DateChart from './DashboardComponents/DateChart'
 import TestHook from '../hooks/TestHook'
-import ReferrarChart from './ReferrerChart';
+import ReferrarChart from './DashboardComponents/ReferrerChart';
 
 function Dashboard() {
 
