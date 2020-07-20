@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 
-const TestHook = () => {
-
-    const [data, setData] = useState("hei");
+const TestHook = ({setData, data}) => {
+    
 
     //const path = window.location.pathname.split("/").pop()
     //keep for using when not utilizing local host
 
     const path = 'd1508053-0982-401d-985d-e9660d2a0cbc'
+
+    console.log(data)
 
     useEffect(() => {
     const fetchData = async () => {
