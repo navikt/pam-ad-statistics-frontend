@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const TestChart = (props) => {
+const DateChart = (props) => {
 
   const test = {
     options: {
@@ -34,4 +34,4 @@ const TestChart = (props) => {
   );
 };
 
-export default TestChart;
+export default DateChart;
