@@ -7,7 +7,6 @@ import adJSON from './testJSON/adJSON'
 
 function App() {
 
-
   return (
     <div className="App">
       <TestChart date = {["17.07","18.07","19.07","20.07","21.07"]} pageviews = {[12,14,17,7,4]} avg = {adJSON.avg}/>
