@@ -9,13 +9,13 @@ const DateChart = (props) => {
         id: "basic-bar"
       },
       xaxis: {
-        categories: props.date //[1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        categories: props.date 
       }
     },
     series: [
       {
         name: "series-1",
-        data: props.pageviews //[30, 40, 45, 50, 49, 60, 70, 91]
+        data: props.pageviews 
       }
     ]
   };
@@ -28,7 +28,6 @@ const DateChart = (props) => {
         type="bar"
         width="500"
       />
-      <div> {props.avg}</div>
     </div>
      
   );
