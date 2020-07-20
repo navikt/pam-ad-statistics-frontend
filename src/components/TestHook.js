@@ -19,18 +19,23 @@ const TestHook = () => {
         const result = await axios(
         'http://localhost:8080/ad/d1508053-0982-401d-985d-e9660d2a0cbc',
         );
-    
+        console.log(result.data.referrals.google)
         setData(result.data);
     };
     
     fetchData();
     }, []);
 
+    const referralsAsList = () => {
+
+    };
+
     return (
         <div>
             <h1>d1508053-0982-401d-985d-e9660d2a0cbc</h1>
             <p>sidevisninger: {data.sidevisninger}</p>
             <p>average: {data.average}</p>
+            <p>referrals: {referralsAsList()}</p>
         </div>
       );
 
