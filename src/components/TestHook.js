@@ -14,10 +14,14 @@ const TestHook = () => {
 
     const [data, setData] = useState("hei");
 
+    //const path = window.location.pathname.split("/").pop()
+
+    const path = 'd1508053-0982-401d-985d-e9660d2a0cbc'
+
     useEffect(() => {
     const fetchData = async () => {
         const result = await axios(
-        'http://localhost:8080/ad/d1508053-0982-401d-985d-e9660d2a0cbc',
+        'http://localhost:8080/ad/' + path,
         );
     
         setData(result.data);
@@ -28,7 +32,9 @@ const TestHook = () => {
 
     return (
         <div>
-            <h1>d1508053-0982-401d-985d-e9660d2a0cbc</h1>
+            <h1>
+                <p>{path}</p>
+            </h1>
             <p>sidevisninger: {data.sidevisninger}</p>
             <p>average: {data.average}</p>
         </div>
