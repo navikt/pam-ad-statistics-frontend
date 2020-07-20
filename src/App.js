@@ -7,14 +7,6 @@ import adJSON from './testJSON/adJSON'
 
 function App() {
 
-  var dates = [];
-  var datePageviews = [];
-
-  for(var data in adJSON.date){
-      dates.push(data);
-      datePageviews.push(adJSON);
-  }
-  console.log(dates,datePageviews)
 
   return (
     <div className="App">
