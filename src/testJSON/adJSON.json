@@ -3,21 +3,24 @@
 "tittel": "jobb",
 "pageviews": 24,
 "avg": 12,
-"referral": {
-  "nav" : 10,
-  "google": 8,
-  "facebook": 6
-},
-"date": {
-  "date1": 4,
-  "date2": 3
-},
-"region": {
-  "oslo": 2,
-  "finnmark": 3
-},
-"device": {
-  "pc": 2,
-  "tablet": 3,
-  "mobile": 10
-}}
+"referrals": [
+    "nav",
+    "google",
+    "facebook"
+],
+"viewsPerReferral": [
+    23,
+    8,
+    10
+],
+"dates": [
+  "19.07",
+  "20.07",
+  "21.07"
+],
+"viewsPerDate": [
+  12,
+  21,
+  31
+] 
+}
