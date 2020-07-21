@@ -32,6 +32,7 @@ const ReferralChart = () => {
       chart: {
         id: "basic-bar"
       },
+      colors: ['#3ec1ab'],
       xaxis: {
         categories: data.referrals
       }
@@ -48,21 +49,24 @@ const ReferralChart = () => {
     
     <div>
       <Chart
-        options={blabla.options}
-        series={blabla.series}
-        type="bar"
-        width="500"
-      />
-      <Chart
         options={options}
         labels={options.labels}
         series={options.series}
-        type="pie"
+        type="donut"
         width="500"
       />
 
     </div> 
   );
+
+  /*
+        <Chart
+        options={blabla.options}
+        series={blabla.series}
+        type="bar"
+        width="500"
+      />
+  */
 };
 
 export default ReferralChart;

@@ -4,6 +4,7 @@ import AverageChart from './DashboardComponents/AverageChart';
 import {AdProvider} from '../AdContext';
 import TotalPageViews from './DashboardComponents/TotalPageViews'
 import DateChart from './DashboardComponents/DateChart';
+import './Dashboard.scss';
 
 export const Dashboard = () => {
 
@@ -11,9 +12,11 @@ export const Dashboard = () => {
     return (
         <AdProvider>
             <div>
-                <ReferralChart/>
-                <TotalPageViews/>
-                <AverageChart/> 
+                <div className = "textComponents">
+                    <TotalPageViews id = "pageviews"/>
+                    <AverageChart/>
+                </div>
+                <ReferralChart id="referralChart"/>
                 <DateChart/>
             </div>
         </AdProvider>
