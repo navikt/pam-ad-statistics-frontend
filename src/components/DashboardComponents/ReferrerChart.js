@@ -1,31 +1,35 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const ReferrarChart = (props) => {
+const ReferrerChart = (props) => {
 
-  const test = {
+  var options = {
+    series: props.pageviews,
+    chart: {
+    width: 380,
+    type: 'pie',
+  },
+  labels: props.referrals,
+  responsive: [{
+    breakpoint: 480,
     options: {
       chart: {
-        id: "basic-bar"
+        width: 200
       },
-      xaxis: {
-        categories: props.referrals 
+      legend: {
+        position: 'bottom'
       }
-    },
-    series: [
-      {
-        name: "series-1",
-        data: props.pageviews 
-      }
-    ]
+    }
+  }]
   };
 
   return (
     <div>
       <Chart
-        options={test.options}
-        series={test.series}
-        type="bar"
+        options={options}
+        labels={options.labels}
+        series={options.series}
+        type="pie"
         width="500"
       />
     </div>
@@ -33,4 +37,4 @@ const ReferrarChart = (props) => {
   );
 };
 
-export default ReferrarChart;
+export default ReferrerChart;
