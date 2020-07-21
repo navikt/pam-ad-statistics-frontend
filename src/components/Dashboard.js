@@ -1,36 +1,22 @@
-import React, { useState } from 'react'
-import DateChart from './DashboardComponents/DateChart'
-import TestHook from '../hooks/TestHook'
-import ReferrarChart from './DashboardComponents/ReferrerChart';
+import React from 'react'
+import ReferralChart from './DashboardComponents/ReferralChart';
+import AverageChart from './DashboardComponents/AverageChart';
+import {AdProvider} from '../AdContext';
+import TotalPageViews from './DashboardComponents/TotalPageViews'
+import DateChart from './DashboardComponents/DateChart';
 
-function Dashboard() {
+export const Dashboard = () => {
 
-    const [data, setData] = useState({
-        "ID": "49823y89hds89489312",
-        "tittel": "jobb",
-        "pageviews": 24,
-        "avg": 0,
-        "referrals": [
-        ],
-        "viewsPerReferral": [
-        ],
-        "date" : [
-
-        ],
-        "viewsPerDate" : [
-
-        ]
-        
-    });
-
-    //<DateChart date = {data.date} pageviews = {data.viewsPerDate} />
   
     return (
-        <div>
-            <ReferrarChart referrals = {data.referrals} pageviews = {data.viewsPerReferral} />
-            <TestHook setData = {setData} data = {data} />
-        </div>
-        
+        <AdProvider>
+            <div>
+                <ReferralChart/>
+                <TotalPageViews/>
+                <AverageChart/> 
+                <DateChart/>
+            </div>
+        </AdProvider>
     );
   }
   
