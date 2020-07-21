@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const DateChart = (props) => {
+const DateChart = () => {
 
   const test = {
     options: {
@@ -9,13 +9,13 @@ const DateChart = (props) => {
         id: "basic-bar"
       },
       xaxis: {
-        categories: props.date 
+        categories: ["19.02","20.02","21.02",]
       }
     },
     series: [
       {
-        name: "series-1",
-        data: props.pageviews 
+        name: "Sidevisninger",
+        data: [56,34,45,12]
       }
     ]
   };
