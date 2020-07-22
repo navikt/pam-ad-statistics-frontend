@@ -11,8 +11,8 @@ const AverageChart = () => {
 
     return(
         <div>
-            <h1>Gjejjonsnittlig visningstid</h1>
-            <h2>{minute} m {seconds} sek</h2>
+            <h1>{minute} m {seconds} sek</h1>
+            <h2>Gjennomsnittlig tid sett på annonsen</h2>
         </div>
     );
 
