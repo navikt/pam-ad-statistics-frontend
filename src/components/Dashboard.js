@@ -11,13 +11,18 @@ export const Dashboard = () => {
   
     return (
         <AdProvider>
-            <div>
-                <div className = "textComponents">
-                    <TotalPageViews id = "pageviews"/>
-                    <AverageChart/>
+            <div className = "Dashboard">
+                <div className = "TextComponents">
+                        <TotalPageViews/>
+                        <AverageChart/>
+                    </div>
+                <div className = "Components">
+                    <div id = "MainTitle">
+                        <h3>Din oversikt</h3>
+                    </div>
+                    <DateChart/>
+                    <ReferralChart/>
                 </div>
-                <ReferralChart id="referralChart"/>
-                <DateChart/>
             </div>
         </AdProvider>
     );

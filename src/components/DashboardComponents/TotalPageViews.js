@@ -9,8 +9,8 @@ const TotalPageviews = () => {
 
     return(
         <div>
-            <h1>Totalt antall visninger</h1>
-            <h2>{data.sidevisninger}</h2>
+            <h1>{data.sidevisninger}</h1>
+            <h2>Totalt antall visninger</h2>
         </div>
         
     );

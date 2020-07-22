@@ -6,13 +6,23 @@ const ReferralChart = () => {
 
   const { data } = useContext(AdContext);
   
+  const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
+
+  const removeDuplicatesInArray = (array) => {
+    return [...new Set(array)]
+  }
+
+  const referrals = removeDuplicatesInArray(shortenedReferrals)
+
+  console.log(removeDuplicatesInArray(shortenedReferrals));
+
   var options = {
     series:  data.viewsPerReferral,
     chart: {
     width: 380,
     type: 'pie',
   },
-  labels: data.referrals,
+  labels: shortenedReferrals,
   responsive: [{
     breakpoint: 480,
     options: {
@@ -48,6 +58,7 @@ const ReferralChart = () => {
   return (
     
     <div>
+      <h3 id = "ChartTitle"> Hvor brukerne har funnet annonsen </h3>
       <Chart
         options={options}
         labels={options.labels}
