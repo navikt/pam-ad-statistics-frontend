@@ -6,15 +6,14 @@ export const AdContext = createContext({});
 export const AdProvider = props => {
 
     const [data, setData] = useState({
-        "ID": "",
-        "tittel": "",
-        "sidevisninger": 0,
-        "avgerage": 0,
+        "pageViews": 0,
+        "averageTimeOnPage": [0
+        ],
         "referrals": [
         ],
         "viewsPerReferral": [
         ],
-        "date" : [
+        "dates" : [
         ],
         "viewsPerDate" : [
         ] 
