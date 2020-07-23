@@ -28,7 +28,7 @@ const DateChart = () => {
         options={test.options}
         series={test.series}
         type="bar"
-        width="500"
+        width="100%"
       />
     </div>
      

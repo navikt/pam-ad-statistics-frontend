@@ -7,16 +7,13 @@
 }
 
 .dashboard {
-  max-width: 50%;
+ width: 50%;
 }
 
 .chart-components {
   display: flex;
   flex-direction: column;
-  align-items: center;
   border: 1px solid #C8F0E1;
-  justify-content: center;
-  vertical-align: middle;
 }
 
 .text-components {
