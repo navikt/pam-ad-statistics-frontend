@@ -7,6 +7,8 @@ const ReferralChart = () => {
   const { data } = useContext(AdContext);
   const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
 
+  console.log(shortenedReferrals)
+
 
   const sortingAndRemovingOfDuplicate = (a,b) => {
     var list = [];
@@ -23,7 +25,7 @@ const ReferralChart = () => {
       element.path != 'nav.no')
     list.push({'path': 'nav.no', 'views': accValue})
     list.sort(function(a, b) {
-        return ((a.views < b.views) ? -1 : ((a.views === b.views) ? 0 : 1));
+        return ((a.views > b.views) ? -1 : ((a.views === b.views) ? 0 : 1));
     });
     const c = []
     const d = []
@@ -38,7 +40,6 @@ const ReferralChart = () => {
   }
 
   const referralsAndViews = sortingAndRemovingOfDuplicate(shortenedReferrals,data.viewsPerReferral)
-
   var options = {
     series:  referralsAndViews[1],
     chart: {
