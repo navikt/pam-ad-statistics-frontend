@@ -35,6 +35,18 @@
   text-align: left;
 }
 
+#chart-button {
+  background-color: #C8F0E1;
+  border: none;
+  font-weight: bold;
+  text-align: left;
+  padding: 16px;
+  padding-left: 10px;
+  width: 100%;
+  min-height: 100%;
+  font-size: 16px;
+}
+
 #header {
   background-color: #C8F0E1;
   width: 100%;
