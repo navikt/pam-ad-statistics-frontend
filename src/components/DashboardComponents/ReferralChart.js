@@ -6,12 +6,6 @@ const ReferralChart = () => {
 
   const { data } = useContext(AdContext);
 
-  const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
-
-  const referralMap = shortenedReferrals.map((e, i) => [e, data.viewsPerReferral[i]]);
-
-  console.log(referralMap);
-
   var options = {
     options: {
       chart: {
@@ -51,16 +45,6 @@ const ReferralChart = () => {
     />
     </div> 
   );
-  
-  /*
-  <Chart
-    options={options}
-    labels={options.labels}
-    series={options.series}
-    type="donut"
-    width="500"
-  />
-  */
 };
 
 export default ReferralChart;
