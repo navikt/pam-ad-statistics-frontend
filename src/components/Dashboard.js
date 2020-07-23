@@ -5,6 +5,7 @@ import {AdProvider} from '../AdContext';
 import TotalPageViews from './DashboardComponents/TotalPageViews'
 import DateChart from './DashboardComponents/DateChart';
 import '../App.css';
+import ChartButton from './DashboardComponents/ChartButton';
 
 export const Dashboard = () => {
 
@@ -22,13 +23,8 @@ export const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className = "chart-components">
-                    <div id = "header">
-                        <h3 id = "main-title">Din oversikt</h3>
-                    </div>
-                    <DateChart/>
-                    <ReferralChart/>
-                </div>
+                <ChartButton/>
+
             </div>
         </AdProvider>
     );
