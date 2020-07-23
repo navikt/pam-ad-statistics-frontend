@@ -5,36 +5,24 @@ import {AdContext} from '../../AdContext';
 const ReferralChart = () => {
 
   const { data } = useContext(AdContext);
-  
+
   var options = {
-    series:  data.viewsPerReferral,
-    chart: {
-    width: 380,
-    type: 'pie',
-  },
-  labels: data.referrals,
-  responsive: [{
-    breakpoint: 480,
-    options: {
-      chart: {
-        width: 200
-      },
-      legend: {
-        position: 'bottom'
-      }
-    }
-  }]
-  };
-
-
-  var blabla = {
     options: {
       chart: {
         id: "basic-bar"
       },
+      colors: ['#3ec1ab'],
       xaxis: {
         categories: data.referrals
-      }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
     },
     series: [
       {
@@ -47,20 +35,14 @@ const ReferralChart = () => {
   return (
     
     <div>
-      <Chart
-        options={blabla.options}
-        series={blabla.series}
-        type="bar"
-        width="500"
-      />
-      <Chart
-        options={options}
-        labels={options.labels}
-        series={options.series}
-        type="pie"
-        width="500"
-      />
+      <h3 id = "chart-title"> Hvor brukerne har funnet annonsen </h3>
 
+      <Chart
+      options={options.options}
+      series={options.series}
+      type="bar"
+      width="500"
+    />
     </div> 
   );
 };
