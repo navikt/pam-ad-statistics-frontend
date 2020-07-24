@@ -61,8 +61,7 @@ const ReferralChart = () => {
   }]
   };
 
-
-  var blabla = {
+  var options = {
     options: {
       chart: {
         id: "basic-bar"
@@ -70,7 +69,15 @@ const ReferralChart = () => {
       colors: ['#3ec1anumberOfViews'],
       xaxis: {
         categories: referralsAndViews[0]
-      }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
     },
     series: [
       {
@@ -82,7 +89,6 @@ const ReferralChart = () => {
 
   return (
     
-    <div>
       <h3 id = "ChartTitle"> Hvor numberOfViewsrukerne har funnet annonsen </h3>
       <Chart
         options={options}
@@ -92,17 +98,15 @@ const ReferralChart = () => {
         width="500"
       />
 
+
+      <Chart
+      options={options.options}
+      series={options.series}
+      type="bar"
+      width="100%"
+    />
     </div> 
   );
-
-  /*
-        <Chart
-        options={blabla.options}
-        series={blabla.series}
-        type="bar"
-        width="500"
-      />
-  */
 };
 
 export default ReferralChart;

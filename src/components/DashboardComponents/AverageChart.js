@@ -7,7 +7,7 @@ const AverageChart = () => {
   const { data } = useContext(AdContext);
 
   const averageTimeOnPage = data.averageTimeOnPage
-
+´
   var totalTimeOnPage = data.averageTimeOnPage.reduce((acc, val)=>
   acc + val)
 
