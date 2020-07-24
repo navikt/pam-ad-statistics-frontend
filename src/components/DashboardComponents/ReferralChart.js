@@ -15,13 +15,13 @@ const ReferralChart = () => {
         list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
   
     var accValue = list.filter(referal =>
-                referal.path == 'nav.no')
+                referal.path === 'nav.no')
                 .reduce(function(_this, val) {
                   return _this + val.views
               }, 0);
 
     list = list.filter(element =>
-      element.path != 'nav.no')
+      element.path !== 'nav.no')
 
     list.push({'path': 'nav.no', 'views': accValue})
     
@@ -41,7 +41,8 @@ const ReferralChart = () => {
   }
 
   const referralsAndViews = sortingAndRemovingOfDuplicate(shortenedReferrals,data.viewsPerReferral)
-  var options = {
+  
+  var optionsPie = {
     series:  referralsAndViews[1],
     chart: {
     width: 380,
@@ -61,7 +62,7 @@ const ReferralChart = () => {
   }]
   };
 
-  var options = {
+  var optionsBar = {
     options: {
       chart: {
         id: "basic-bar"
@@ -87,21 +88,21 @@ const ReferralChart = () => {
     ]
   };
 
+  console.log()
+
   return (
     <div>
       <h3 id = "ChartTitle"> Hvor numberOfViewsrukerne har funnet annonsen </h3>
       <Chart
-        options={options}
-        labels={options.labels}
-        series={options.series}
+        options={optionsPie}
+        labels={optionsPie.labels}
+        series={optionsPie.series}
         type="donut"
         width="500"
       />
-
-
       <Chart
-      options={options.options}
-      series={options.series}
+      options={optionsBar.options}
+      series={optionsBar.series}
       type="bar"
       width="100%"
     />
