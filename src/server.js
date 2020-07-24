@@ -1,7 +1,4 @@
-
 var express = require('express');
-const { servicesVersion } = require('typescript');
-const { json } = require('express');
 var server = express();
 const port = 9000;
 const fetch = require('node-fetch')
@@ -28,7 +25,12 @@ server.get('/ad/:id', function(req, res){
     fetch(api_url,)
         .then(res => res.json())
         .then(json => res.send(json))
-})
+})    
+
+server.get('/internal/isAlive', (req, res) => res.sendStatus(200));
+server.get('/internal/isReady', (req, res) => res.sendStatus(200));
+
+
 
 server.listen(port, function () {
     console.log(`ExpressJS is running on port ${port}!`);
