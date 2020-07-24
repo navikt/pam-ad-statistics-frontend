@@ -23,12 +23,12 @@ const DateChart = () => {
 
   return (
     <div>
-      <h3 id = "chart-title"> Visninger etter dato </h3>
+      <h4 id = "chart-title"> Visninger etter dato </h4>
       <Chart
         options={test.options}
         series={test.series}
         type="bar"
-        width="500"
+        width="100%"
       />
     </div>
      

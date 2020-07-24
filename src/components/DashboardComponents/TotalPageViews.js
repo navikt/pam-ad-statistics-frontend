@@ -10,7 +10,7 @@ const TotalPageviews = () => {
     return(
         <div>
             <h1>{data.sidevisninger}</h1>
-            <h4>Totalt antall visninger</h4>
+            <h4>Klikk på annonsen</h4>
         </div>
         
     );

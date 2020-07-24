@@ -23,7 +23,7 @@ const ReferralChart = () => {
       element.path != 'nav.no')
     list.push({'path': 'nav.no', 'views': accValue})
     list.sort(function(a, b) {
-        return ((a.views < b.views) ? -1 : ((a.views === b.views) ? 0 : 1));
+        return ((a.views > b.views) ? -1 : ((a.views === b.views) ? 0 : 1));
     });
     const c = []
     const d = []
@@ -88,13 +88,13 @@ const ReferralChart = () => {
   return (
     
     <div>
-      <h3 id = "chart-title"> Hvor brukerne har funnet annonsen </h3>
+      <h4 id = "chart-title"> Hvor brukerne har funnet annonsen </h4>
 
       <Chart
       options={options.options}
       series={options.series}
       type="bar"
-      width="500"
+      width="100%"
     />
     </div> 
   );
