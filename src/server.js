@@ -5,6 +5,7 @@ const { json } = require('express');
 var server = express();
 const port = 9000;
 const fetch = require('node-fetch')
+var cors = require('cors');
 
 var ad = 'json_fil'
 
@@ -15,6 +16,10 @@ server.get('/', function (req, res) {
     res.send('I\'m running!');
 });
 
+server.use(cors({
+    origin: 'http://localhost:3000'
+  }));
+
 server.get('/ad/:id', function(req, res){
 
     const key = req.params.id //not real key
@@ -22,9 +27,7 @@ server.get('/ad/:id', function(req, res){
 
     fetch(api_url,)
         .then(res => res.json())
-        .then(json => console.log(json));
-        
-        res.send('JSON_FIL' + req.params.id + '  ' );
+        .then(json => res.send(json))
 })
 
 server.listen(port, function () {
