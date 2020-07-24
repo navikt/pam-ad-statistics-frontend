@@ -88,7 +88,7 @@ const ReferralChart = () => {
   };
 
   return (
-    
+    <div>
       <h3 id = "ChartTitle"> Hvor numberOfViewsrukerne har funnet annonsen </h3>
       <Chart
         options={options}
