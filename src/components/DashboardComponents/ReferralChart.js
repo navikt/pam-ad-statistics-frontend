@@ -15,16 +15,16 @@ const ReferralChart = () => {
         list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
   
     var accValue = list.filter(referal =>
-                referal.path == 'nav.no')
+                referal.path === 'nav.no')
                 .reduce(function(_this, val) {
                   return _this + val.views
               }, 0);
 
     list = list.filter(element =>
-      element.path != 'nav.no')
+      element.path !== 'nav.no')
 
     list.push({'path': 'nav.no', 'views': accValue})
-    
+
     list.sort(function(referrals, numberOfViewsList) {
         return ((referrals.views > numberOfViewsList.views) ? -1 : ((referrals.views === numberOfViewsList.views) ? 0 : 1));
     });
@@ -61,7 +61,7 @@ const ReferralChart = () => {
   }]
   };
 
-
+/*
   var blabla = {
     options: {
       chart: {
@@ -79,7 +79,7 @@ const ReferralChart = () => {
       }
     ]
   };
-
+*/
   return (
     
     <div>
