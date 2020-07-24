@@ -88,7 +88,7 @@ const ReferralChart = () => {
   return (
     
     <div>
-      <h3 id = "chart-title"> Hvor brukerne har funnet annonsen </h3>
+      <h4 id = "chart-title"> Hvor brukerne har funnet annonsen </h4>
 
       <Chart
       options={options.options}
