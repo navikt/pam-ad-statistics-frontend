@@ -67,7 +67,7 @@ const ReferralChart = () => {
       chart: {
         id: "basic-bar"
       },
-      colors: ['#3ec1anumberOfViews'],
+      colors: ['#3ec1ab'],
       xaxis: {
         categories: referralsAndViews[0]
       },
@@ -91,23 +91,24 @@ const ReferralChart = () => {
   console.log()
 
   return (
-    <div>
-      <h3 id = "ChartTitle"> Hvor numberOfViewsrukerne har funnet annonsen </h3>
+    <div className = "chart-components__child">
+      <div className = "chart-title"> Hvor leserene har funnet annonsen </div>
       <Chart
         options={optionsPie}
         labels={optionsPie.labels}
         series={optionsPie.series}
         type="donut"
-        width="500"
+        width="100%"
       />
-      <Chart
-      options={optionsBar.options}
-      series={optionsBar.series}
-      type="bar"
-      width="100%"
-    />
     </div> 
   );
 };
-
+/*
+  <Chart
+  options={optionsBar.options}
+  series={optionsBar.series}
+  type="bar"
+  width="100%"
+/>
+*/
 export default ReferralChart;

@@ -16,22 +16,14 @@
   border: 1px solid #C8F0E1;
 }
 
-.text-components {
-  display: flex;
-  flex-direction: row;
+.chart-components__child {
+  padding: 20px;
 }
 
-.text-component-child {
-  width: 50%;
-  float: left;
-  padding: 10px;
+.chart-title {
   text-align: left;
-}
-
-#chart-title {
-  text-align: left;
-  padding-left: 16px;
-  padding-top: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
 }
 
 #chart-button {
@@ -43,7 +35,57 @@
   padding-left: 10px;
   width: 100%;
   min-height: 100%;
-  font-size: 16px;
+  font-size: 1.25rem;
+}
+
+.text-components {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 0.7rem;
+}
+
+.text-component {
+  width: 50%;
+  float: left;
+  padding: 10px;
+  text-align: left;
+}
+
+.text-component {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-component__top-right {
+  display: flex;
+  height: 50%;
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.text-component__top-left {
+  display: flex;
+  height: 50%;
+  text-align: left;
+  padding-bottom: 0.3rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.text-component__bot-right {
+  display: flex;
+  height: 50%;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.text-component__bot-left {
+  display: flex;
+  height: 50%;
+  text-align: left;
+  font-size: 1rem;
+  padding-bottom: 1rem;
 }
 
 #header {
@@ -55,4 +97,3 @@
 #main-title {
   padding-left: 10px;
 }
-

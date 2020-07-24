@@ -15,12 +15,12 @@ export const Dashboard = () => {
             <div className = "dashboard">
 
                 <div className = "text-components">
-                    <div className = "text-component-child">
+                    
                         <TotalPageViews/>
-                    </div>
-                    <div className = "text-component-child">
+                    
+                    
                         <AverageChart/>
-                    </div>
+                    
                 </div>
 
                 <ChartButton/>
