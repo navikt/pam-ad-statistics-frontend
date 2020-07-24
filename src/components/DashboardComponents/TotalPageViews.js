@@ -6,11 +6,13 @@ const TotalPageviews = () => {
 
     const { data } = useContext(AdContext);
 
+    console.log()
+
 
     return(
         <div>
-            <h1>{data.sidevisninger}</h1>
-            <h4>Klikk på annonsen</h4>
+            <h1>{data.pageViews}</h1>
+            <h2>Totalt antall visninger</h2>
         </div>
         
     );

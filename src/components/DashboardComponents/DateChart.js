@@ -1,22 +1,36 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Chart from "react-apexcharts";
+import {AdContext} from '../../AdContext'
 
 const DateChart = () => {
 
+  const { data } = useContext(AdContext);
+
+
+  const dateify = (date) => {
+    return date.slice(6,8) +'.'+ date.slice(4,6) +'.'+ date.slice(0,4)
+  }
+
+  const dates = data.dates.map(date =>
+    dateify(date))
+
+  const viewsPerDate = data.viewsPerDate
+
+  
   const test = {
     options: {
       chart: {
         id: "basic-bar"
       },
       xaxis: {
-        categories: ["19.02","20.02","21.02","17.05"]
+        categories: dates
       },
       colors: ['#3ec1ab'],
     },
     series: [
       {
         name: "Sidevisninger",
-        data: [56,34,45,12]
+        data: viewsPerDate
       }
     ]
   };

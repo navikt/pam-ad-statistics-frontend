@@ -8,10 +8,11 @@ const ReferralChart = () => {
   const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
 
 
-  const sortingAndRemovingOfDuplicate = (a,b) => {
+  const sortingAndRemovingOfDuplicate = (referrals,numberOfViewsList) => {
     var list = [];
-    for (var j = 0; j < a.length; j++) 
-        list.push({'path': a[j], 'views': b[j]});
+    for (var j = 0; j < referrals.length; j++) 
+
+        list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
   
     var accValue = list.filter(referal =>
                 referal.path == 'nav.no')
@@ -21,24 +22,25 @@ const ReferralChart = () => {
 
     list = list.filter(element =>
       element.path != 'nav.no')
+
     list.push({'path': 'nav.no', 'views': accValue})
-    list.sort(function(a, b) {
-        return ((a.views > b.views) ? -1 : ((a.views === b.views) ? 0 : 1));
+    
+    list.sort(function(referrals, numberOfViewsList) {
+        return ((referrals.views > numberOfViewsList.views) ? -1 : ((referrals.views === numberOfViewsList.views) ? 0 : 1));
     });
-    const c = []
-    const d = []
+    const orderedReferrals = []
+    const orderedViews = []
 
     for (var k = 0; k < list.length; k++) {
-        c[k] = list[k].path;
-        d[k] = list[k].views;
+        orderedReferrals[k] = list[k].path;
+        orderedViews[k] = list[k].views;
     }
 
-    return [c,d]
+    return [orderedReferrals,orderedViews]
 
   }
 
   const referralsAndViews = sortingAndRemovingOfDuplicate(shortenedReferrals,data.viewsPerReferral)
-
   var options = {
     series:  referralsAndViews[1],
     chart: {
@@ -47,13 +49,13 @@ const ReferralChart = () => {
   },
   labels: referralsAndViews[0],
   responsive: [{
-    breakpoint: 480,
+    numberOfViewsreakpoint: 480,
     options: {
       chart: {
         width: 200
       },
       legend: {
-        position: 'bottom'
+        position: 'numberOfViewsottom'
       }
     }
   }]
@@ -64,7 +66,7 @@ const ReferralChart = () => {
       chart: {
         id: "basic-bar"
       },
-      colors: ['#3ec1ab'],
+      colors: ['#3ec1anumberOfViews'],
       xaxis: {
         categories: referralsAndViews[0]
       },
@@ -87,8 +89,15 @@ const ReferralChart = () => {
 
   return (
     
-    <div>
-      <h4 id = "chart-title"> Hvor brukerne har funnet annonsen </h4>
+      <h3 id = "ChartTitle"> Hvor numberOfViewsrukerne har funnet annonsen </h3>
+      <Chart
+        options={options}
+        labels={options.labels}
+        series={options.series}
+        type="donut"
+        width="500"
+      />
+
 
       <Chart
       options={options.options}

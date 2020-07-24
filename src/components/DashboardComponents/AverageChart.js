@@ -4,18 +4,24 @@ import {AdContext} from '../../AdContext'
 
 const AverageChart = () => {
 
-    const { data } = useContext(AdContext);
+  const { data } = useContext(AdContext);
 
-    var minute = Math.floor(data.average / 60)
-    var seconds = Math.floor(data.average - minute * 60)
+  const averageTimeOnPage = data.averageTimeOnPage
+´
+  var totalTimeOnPage = data.averageTimeOnPage.reduce((acc, val)=>
+  acc + val)
 
-    return(
-        <div>
-            <h1>{minute} m {seconds} sek</h1>
-            <h4>Gjennomsnittlig tid sett på annonsen</h4>
-        </div>
-    );
+  const totalAverage = totalTimeOnPage/averageTimeOnPage.length
 
+  var minute = Math.floor(totalAverage / 60)
+  var seconds = Math.floor(totalAverage - minute * 60)
+
+  return(
+    <div>
+      <h1>{minute} m {seconds} sek</h1>
+      <h2>Gjennomsnittlig tid sett på annonsen</h2>
+    </div>
+  );
 };
 
 export default AverageChart;
