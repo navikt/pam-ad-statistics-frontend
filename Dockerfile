@@ -11,7 +11,7 @@ RUN npm --version
 RUN npm config set strict-ssl false
 RUN npm ci
 RUN npm run build
-RUN npm run build:server
+#RUN npm run build:server
 
 # Selve imaget:
 FROM navikt/node-express:12.2.0
