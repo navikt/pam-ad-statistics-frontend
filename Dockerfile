@@ -4,7 +4,6 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 
-COPY dist/ ./dist
 COPY node_modules/ ./node_modules
 COPY public/ ./public
 COPY server/ ./server
