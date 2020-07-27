@@ -48,6 +48,19 @@ const ReferralChart = () => {
     width: 380,
     type: 'pie',
   },
+  legend: {
+    position: 'bottom'
+  },
+  plotOptions: {
+    pie: {
+      donut: {
+        size: '55%'
+      },
+      dataLabels: {
+        minAngleToShowLabel: 15
+      }
+    }
+  },
   labels: referralsAndViews[0],
   responsive: [{
     numberOfViewsreakpoint: 480,
@@ -55,9 +68,6 @@ const ReferralChart = () => {
       chart: {
         width: 200
       },
-      legend: {
-        position: 'numberOfViewsottom'
-      }
     }
   }]
   };
