@@ -1,31 +1,15 @@
-FROM node:10 as builder
+FROM node:carbon
 
 WORKDIR /usr/src/app
 
-COPY src/ ./src
-COPY public/ ./public
-COPY package.json package-lock.json server.js
+COPY package.json ./
 
-RUN npm --version
-RUN npm config set strict-ssl false
-RUN npm ci
-RUN npm run build
-RUN npm run build:server
-
-# Selve imaget:
-FROM navikt/node-express:12.2.0
-
-WORKDIR /usr/src/app
-
-COPY --from=builder /usr/src/app/public/ ./public
-COPY --from=builder /usr/src/app/build/ ./build
-COPY --from=builder /usr/src/app/package.json ./
-COPY --from=builder /usr/src/app/package-lock.json ./
-COPY --from=builder /usr/src/app/server.js ./
-COPY --from=builder /usr/src/app/instrumentation.js ./
-
-RUN npm config set strict-ssl false
-RUN npm ci --production
+COPY server/ ./server
+COPY dist/ ./dist
+COPY node_modules/ ./node_modules
+COPY views/ ./views
+COPY images/ ./images
 
 EXPOSE 3000
-CMD ["npm", "run", "start:server"]
+
+CMD ["npm", "run", "start-express"]
