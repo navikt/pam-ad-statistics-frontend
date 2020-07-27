@@ -27,6 +27,10 @@ server.get('/ad/:id', function(req, res){
         .then(json => res.send(json))
 })    
 
+server.get('/', (req, res) => {
+    res.redirect('/ad')
+});
+
 server.get('/ad/internal/isAlive', (req, res) => res.sendStatus(200));
 server.get('/ad/internal/isReady', (req, res) => res.sendStatus(200));
 
