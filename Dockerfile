@@ -4,12 +4,11 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 
-COPY server.js ./
-COPY --from=builder /usr/src/App.js ./
+COPY dist/ ./dist
 COPY node_modules/ ./node_modules
+COPY public/ ./public
+COPY server/ ./server
 
-
-EXPOSE 8080
-EXPOSE 3000
+EXPOSE 9000
 
 CMD ["npm", "run", "start-express"]
