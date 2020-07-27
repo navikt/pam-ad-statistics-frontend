@@ -7,6 +7,6 @@ COPY package.json ./
 COPY server.js ./ 
 COPY node_modules/ ./node_modules
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["npm", "run", "start-express"]
