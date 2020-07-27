@@ -23,7 +23,6 @@ COPY --from=builder /usr/src/app/build/ ./build
 COPY --from=builder /usr/src/app/package.json ./
 COPY --from=builder /usr/src/app/package-lock.json ./
 COPY --from=builder /usr/src/app/server.js ./
-COPY --from=builder /usr/src/app/instrumentation.js ./
 
 RUN npm config set strict-ssl false
 RUN npm ci --production
