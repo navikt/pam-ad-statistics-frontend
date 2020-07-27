@@ -11,8 +11,11 @@ const ReferralChart = () => {
   const sortingAndRemovingOfDuplicate = (referrals,numberOfViewsList) => {
     var list = [];
     for (var j = 0; j < referrals.length; j++) 
-
-        list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
+        if (referrals[j] == '(direct)') {
+          list.push({'path': 'link direkte til siden', 'views': numberOfViewsList[j]});
+        } else {
+          list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
+        }
   
     var accValue = list.filter(referal =>
                 referal.path === 'nav.no')
