@@ -1,7 +1,7 @@
 var express = require('express');
 var server = express();
 const port = 9000;
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
 var cors = require('cors');
 
 var ad = 'json_fil'
@@ -27,8 +27,8 @@ server.get('/ad/:id', function(req, res){
         .then(json => res.send(json))
 })    
 
-server.get('/internal/isAlive', (req, res) => res.sendStatus(200));
-server.get('/internal/isReady', (req, res) => res.sendStatus(200));
+server.get('/ad/internal/isAlive', (req, res) => res.sendStatus(200));
+server.get('/ad/internal/isReady', (req, res) => res.sendStatus(200));
 
 
 
