@@ -41,7 +41,7 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-sbs
-          RESOURCE: naiserator.yml
+          RESOURCE: naiserator.yaml
           VARS: naiserator-dev.json
       - name: post-deploy
         uses: navikt/pam-deploy/actions/post-deploy@v1
