@@ -36,8 +36,8 @@ const DateChart = () => {
   };
 
   return (
-    <div>
-      <h4 id = "chart-title"> Visninger etter dato </h4>
+    <div className = "chart-components__child">
+      <div className = "chart-title"> Visninger etter dato </div>
       <Chart
         options={test.options}
         series={test.series}

@@ -17,9 +17,9 @@ const AverageChart = () => {
   var seconds = Math.floor(totalAverage - minute * 60)
 
   return(
-    <div>
-      <h1>{minute} m {seconds} sek</h1>
-      <h2>Gjennomsnittlig tid sett på annonsen</h2>
+    <div className = "text-component">
+      <div className = "text-component__top-right">{minute} m {seconds} sek</div>
+      <div className = "text-component__bot-right">Gjennomsnittlig tid sett på annonsen</div>
     </div>
   );
 };
