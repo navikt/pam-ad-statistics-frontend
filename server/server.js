@@ -12,10 +12,6 @@ const pathProperties = {
     PAM_CONTEXT_PATH: '/ad'
 }
 
-server.use(cors({
-    origin: 'http://localhost:3000'
-  }));
-
 server.get('/ad/:id', function(req, res){
 
     const key = req.params.id //not real key
