@@ -27,7 +27,7 @@ const ReferralChart = () => {
       element.path !== 'nav.no')
 
     list.push({'path': 'nav.no', 'views': accValue})
-    
+
     list.sort(function(referrals, numberOfViewsList) {
         return ((referrals.views > numberOfViewsList.views) ? -1 : ((referrals.views === numberOfViewsList.views) ? 0 : 1));
     });
