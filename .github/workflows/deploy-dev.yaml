@@ -8,7 +8,6 @@ on:
       - "CODEOWNERS"
     branches:
       - master
-      - feature/PAM-4323-add-possibility-for-deployment
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
