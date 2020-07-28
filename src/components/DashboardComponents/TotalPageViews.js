@@ -10,9 +10,9 @@ const TotalPageviews = () => {
 
 
     return(
-        <div>
-            <h1>{data.pageViews}</h1>
-            <h2>Totalt antall visninger</h2>
+        <div className = "text-component">
+            <div className = "text-component__top-left">{data.pageViews}</div>
+            <div className = "text-component__bot-left">Klikk på annonsen</div>
         </div>
         
     );
