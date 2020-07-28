@@ -37,8 +37,8 @@ server.get('/', (req, res) => {
     res.redirect('/ad')
 });
 
-server.get(`${pathProperties.PAM_CONTEXT_PATH}/internal/isAlive`, (req, res) => res.sendStatus(200));
-server.get(`${pathProperties.PAM_CONTEXT_PATH}/internal/isReady`, (req, res) => res.sendStatus(200));
+server.get(`/internal/isAlive`, (req, res) => res.sendStatus(200));
+server.get(`/internal/isReady`, (req, res) => res.sendStatus(200));
 
 
 

@@ -14,10 +14,10 @@ spec:
     cpuThresholdPercentage: 50
   liveness:
     initialDelay: 60
-    path: /ad/internal/isAlive
+    path: /internal/isAlive
   readiness:
     initialDelay: 60
-    path: /ad/internal/isReady
+    path: /internal/isReady
   resources:
     limits:
       cpu: 500m
