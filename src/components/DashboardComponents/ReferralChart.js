@@ -51,6 +51,9 @@ const ReferralChart = () => {
     width: 380,
     type: 'pie',
   },
+   theme: { 
+      palette: 'palette4', 
+  },
   legend: {
     position: 'bottom'
   },
