@@ -11,7 +11,7 @@ const ReferralChart = () => {
   const sortingAndRemovingOfDuplicate = (referrals,numberOfViewsList) => {
     var list = [];
     for (var j = 0; j < referrals.length; j++) 
-        if (referrals[j] == '(direct)') {
+        if (referrals[j] === '(direct)') {
           list.push({'path': 'link direkte til siden', 'views': numberOfViewsList[j]});
         } else {
           list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
@@ -74,7 +74,7 @@ const ReferralChart = () => {
     }
   }]
   };
-
+/*
   var optionsBar = {
     options: {
       chart: {
@@ -100,6 +100,7 @@ const ReferralChart = () => {
       }
     ]
   };
+  */
 
   console.log()
 
