@@ -11,8 +11,11 @@ const ReferralChart = () => {
   const sortingAndRemovingOfDuplicate = (referrals,numberOfViewsList) => {
     var list = [];
     for (var j = 0; j < referrals.length; j++) 
-
-        list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
+        if (referrals[j] == '(direct)') {
+          list.push({'path': 'link direkte til siden', 'views': numberOfViewsList[j]});
+        } else {
+          list.push({'path': referrals[j], 'views': numberOfViewsList[j]});
+        }
   
     var accValue = list.filter(referal =>
                 referal.path === 'nav.no')
@@ -41,11 +44,25 @@ const ReferralChart = () => {
   }
 
   const referralsAndViews = sortingAndRemovingOfDuplicate(shortenedReferrals,data.viewsPerReferral)
-  var options = {
+  
+  var optionsPie = {
     series:  referralsAndViews[1],
     chart: {
     width: 380,
     type: 'pie',
+  },
+  legend: {
+    position: 'bottom'
+  },
+  plotOptions: {
+    pie: {
+      donut: {
+        size: '55%'
+      },
+      dataLabels: {
+        minAngleToShowLabel: 15
+      }
+    }
   },
   labels: referralsAndViews[0],
   responsive: [{
@@ -54,23 +71,27 @@ const ReferralChart = () => {
       chart: {
         width: 200
       },
-      legend: {
-        position: 'numberOfViewsottom'
-      }
     }
   }]
   };
 
-/*
-  var blabla = {
+  var optionsBar = {
     options: {
       chart: {
         id: "basic-bar"
       },
-      colors: ['#3ec1anumberOfViews'],
+      colors: ['#3ec1ab'],
       xaxis: {
         categories: referralsAndViews[0]
-      }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
     },
     series: [
       {
@@ -79,30 +100,28 @@ const ReferralChart = () => {
       }
     ]
   };
-*/
-  return (
-    
-    <div>
-      <h3 id = "ChartTitle"> Hvor numberOfViewsrukerne har funnet annonsen </h3>
-      <Chart
-        options={options}
-        labels={options.labels}
-        series={options.series}
-        type="donut"
-        width="500"
-      />
 
+  console.log()
+
+  return (
+    <div className = "chart-components__child">
+      <div className = "chart-title"> Hvor leserene har funnet annonsen </div>
+      <Chart
+        options={optionsPie}
+        labels={optionsPie.labels}
+        series={optionsPie.series}
+        type="donut"
+        width="100%"
+      />
     </div> 
   );
-
-  /*
-        <Chart
-        options={blabla.options}
-        series={blabla.series}
-        type="bar"
-        width="500"
-      />
-  */
 };
-
+/*
+  <Chart
+  options={optionsBar.options}
+  series={optionsBar.series}
+  type="bar"
+  width="100%"
+/>
+*/
 export default ReferralChart;

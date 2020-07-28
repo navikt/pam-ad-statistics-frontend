@@ -36,13 +36,13 @@ const DateChart = () => {
   };
 
   return (
-    <div>
-      <h3 id = "ChartTitle"> Visninger etter dato </h3>
+    <div className = "chart-components__child">
+      <div className = "chart-title"> Visninger etter dato </div>
       <Chart
         options={test.options}
         series={test.series}
         type="bar"
-        width="500"
+        width="100%"
       />
     </div>
      
