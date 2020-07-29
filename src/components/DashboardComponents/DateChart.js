@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
 import Chart from "react-apexcharts";
-import {AdContext} from '../../AdContext'
+import {DataContext} from '../../DataContext'
 
 const DateChart = () => {
 
-  const { data } = useContext(AdContext);
+  const { data } = useContext(DataContext);
 
 
   const dateify = (date) => {

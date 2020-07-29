@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
-import {AdContext} from '../../AdContext'
+import {DataContext} from '../../DataContext'
 
 
 const AverageChart = () => {
 
-  const { data } = useContext(AdContext);
+  const { data } = useContext(DataContext);
 
   const averageTimeOnPage = data.averageTimeOnPage
   

@@ -1,12 +1,13 @@
 import React, {useState, createContext, useEffect} from 'react';
 import axios from "axios";
 
-export const AdContext = createContext({});
+export const DataContext = createContext({});
 
-export const AdProvider = props => {
+export const DataProvider = props => {
 
     const [data, setData] = useState({
-        "pageViews": 0,
+        "pageViewsAd": 0,
+        "pageViewsCandidate": 0,
         "averageTimeOnPage": [0
         ],
         "referrals": [
@@ -37,8 +38,8 @@ export const AdProvider = props => {
     }, []);
 
     return (
-        <AdContext.Provider value = {{data}}>
+        <DataContext.Provider value = {{data}}>
              {props.children}
-        </AdContext.Provider>
+        </DataContext.Provider>
     );
 }
