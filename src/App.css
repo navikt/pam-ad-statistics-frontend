@@ -16,6 +16,7 @@
 .dashboard_candidate {
   flex: 1;
   padding: 5rem;
+  max-width: 398.33px;
  }
 
 .chart-components {
@@ -99,7 +100,7 @@
 .title {
   padding: 2rem;
   font-size: 2rem;
-  opacity: 50%;
+  opacity: 30%;
 }
 
 #header {
