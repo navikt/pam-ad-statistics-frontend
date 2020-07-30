@@ -18,7 +18,10 @@ const AverageChart = () => {
 
   return(
     <div className = "text-component">
-      <div className = "text-component__top-right">{minute} m {seconds} sek</div>
+      {minute == 0 ? 
+      ( <div className = "text-component__top-right">{seconds} sek</div> ) :
+      ( <div className = "text-component__top-right">{minute} m {seconds} sek</div> )
+      }
       <div className = "text-component__bot-right">Gjennomsnittlig tid sett på annonsen</div>
     </div>
   );
