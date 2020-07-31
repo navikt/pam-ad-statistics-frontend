@@ -1,37 +1,18 @@
 import React, {useState, createContext, useEffect} from 'react';
 import axios from "axios";
 
-export const DataContext = createContext({});
+export const CandidateDataContext = createContext({});
 
-export const DataProvider = props => {
+export const CandidateDataProvider = props => {
 
     const [data, setData] = useState({
-        "pageViews": 0,
-        "pageViewsCandidate": 0,
-        "averageTimeOnPage": [0
-        ],
-        "referrals": [
-        ],
-        "viewsPerReferral": [
-        ],
-        "dates" : [
-        ],
-        "viewsPerDate" : [
-        ] 
+        "pageViews": 0
     });
 
 
     const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
     const id = pathList.pop()
-    var type = pathList.pop()
-
-    if(type === 'stilling'){
-        type = 'ad'
-    }else{
-        type = 'candidate'
-    }
-
-    console.log(id, type)
+    const type = 'candidate'
 
     //window.location.pathname
     //keep for using when not utilizing local host
@@ -44,13 +25,12 @@ export const DataProvider = props => {
         setData(result.data);
     };
 
-    
     fetchData();
     }, []);
 
     return (
-        <DataContext.Provider value = {{data}}>
+        <CandidateDataContext.Provider value = {{data}}>
              {props.children}
-        </DataContext.Provider>
+        </CandidateDataContext.Provider>
     );
 }

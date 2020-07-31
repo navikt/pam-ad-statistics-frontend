@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
-import {DataContext} from '../../DataContext'
+import {AdDataContext} from '../../AdDataContext'
 
 
 const TotalPageviews = () => {
 
-    const { data } = useContext(DataContext);
+    const { data } = useContext(AdDataContext);
 
     console.log()
 

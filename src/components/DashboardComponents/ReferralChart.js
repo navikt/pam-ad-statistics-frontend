@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
 import Chart from "react-apexcharts";
-import {DataContext} from '../../DataContext';
+import {AdDataContext} from '../../AdDataContext';
 
 const ReferralChart = () => {
 
-  const { data } = useContext(DataContext);
+  const { data } = useContext(AdDataContext);
   const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
 
 

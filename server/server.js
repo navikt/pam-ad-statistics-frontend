@@ -25,7 +25,7 @@ server.use(cors({
 server.get('/ad/:id', function(req, res){
 
     const key = req.params.id
-    const api_url = `http://localhost:8080${pathProperties.AD_CONTEXT_PATH}/${key}`
+    const api_url = `http://localhost:8080${pathProperties.AD_CONTEXT_PATH}?adID=${key}`
 
     fetch(api_url,)
         .then(res => res.json())

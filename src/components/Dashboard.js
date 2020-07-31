@@ -1,6 +1,6 @@
 import React from 'react'
 import AverageChart from './DashboardComponents/AverageChart';
-import {DataProvider} from '../DataContext';
+import {AdDataProvider} from '../AdDataContext';
 import TotalPageViews from './DashboardComponents/TotalPageViews'
 import '../App.css';
 import ChartButton from './DashboardComponents/ChartButton';
@@ -9,7 +9,7 @@ export const Dashboard = () => {
 
   
     return (
-        <DataProvider>
+        <AdDataProvider>
             <div className = "dashboard">
 
                 <div className = "text-components">
@@ -24,7 +24,7 @@ export const Dashboard = () => {
                 <ChartButton/>
 
             </div>
-        </DataProvider>
+        </AdDataProvider>
     );
   }
   
