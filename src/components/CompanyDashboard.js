@@ -1,9 +1,9 @@
 import React from 'react'
-import AverageChart from './DashboardComponents/AverageChart';
+import AverageChart from './DashboardComponents/AverageChart.js';
 import {AdProvider} from '../AdContext';
-import TotalPageViews from './DashboardComponents/TotalPageViews'
+import TotalPageViews from './DashboardComponents/TotalPageViews.js'
 import '../App.css';
-import ChartButton from './DashboardComponents/ChartButton';
+import ChartButton from './DashboardComponents/ChartButton.js';
 
 export const Dashboard = () => {
 

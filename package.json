@@ -26,7 +26,7 @@
     "start": "concurrently \"react-scripts start\" \"npm run start-express\"",
     "start-express": "node server/server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "browserslist": {
@@ -42,6 +42,30 @@
     ]
   },
   "devDependencies": {
-    "json-loader": "^0.5.7"
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.2.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-15": "^1.4.1",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.2.2",
+    "json-loader": "^0.5.7",
+    "react-test-renderer": "^15.6.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "pam-ad-statistics-frontend/src/__mocks__/fileMock.js",
+      "\\.(css|less)$": "/Users/cat/Documents/pam-ad-statistics-frontend/src/__mocks__/styleMock.js"
+    }
   }
 }
