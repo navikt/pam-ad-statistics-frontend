@@ -26,8 +26,9 @@ server.use(cors({
   }
 }));
 
-console.log('hei  ' + process.env.BACKEND_ENDPOINT )
-console.log('url ' + process.env.BACKEND_URL)
+console.log('BACKEND_ENDPOINT: ' + process.env.BACKEND_ENDPOINT )
+console.log('BACKEND_URL:  ' + process.env.BACKEND_URL)
+
 
 server.get('/api/ad/:id', function(req, res){
   const key = req.params.id
@@ -50,18 +51,23 @@ server.get('/api/candidate/:id', function(req, res){
 
 server.use('/', express.static(path.resolve(__dirname, 'public')));
 
+
+
 server.use(
   '/api/ad',
-  proxy(process.env.BACKEND_URL, {
+  proxy(!process.env.BACKEND_URL, {
       https: process.env.NODE_ENV !== 'development',
       proxyReqPathResolver: (req) => {
-  return `${BACKEND_ENDPOINT}/${req.originalUrl.split('/api/ad/').pop()}`
+        return `${BACKEND_ENDPOINT}/${req.originalUrl.split('/api/ad/').pop()}`
+  
       }
-  })
+  }),
 );
 
 
 server.get(`/internal/isAlive`, (req, res) => res.sendStatus(200));
 server.get(`/internal/isReady`, (req, res) => res.sendStatus(200));
 
-server.listen(PORT, () => console.log(`started server at ${PORT}`));
+server.listen(port, () => {
+  console.log('Server listening on port', port);
+});
