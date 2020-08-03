@@ -20,7 +20,7 @@ export const CandidateDataProvider = props => {
     useEffect(() => {
     const fetchData = async () => {
         const result = await axios(
-        'http://localhost:9000/'+ type + '/' + id,
+        'http://localhost:9000/api/'+ type + '/' + id,
         );
         setData(result.data);
     };
