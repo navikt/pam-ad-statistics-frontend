@@ -7,8 +7,8 @@ var cors = require('cors');
 server.set('port',port)
 
 const pathProperties = {
-    AD_CONTEXT_PATH: '/ad',
-    CANDIDATE_CONTEXT_PATH: '/candidate'
+    AD_CONTEXT_PATH: '/ad?adID=',
+    CANDIDATE_CONTEXT_PATH: '/candidate?candidateID='
 }
 
 var allowedOrigins = 'http://localhost:3000';
@@ -23,37 +23,34 @@ server.use(cors({
 }));
 
 server.get('/ad/:id', function(req, res){
-
-    const key = req.params.id
-    const api_url = `http://localhost:8080${pathProperties.AD_CONTEXT_PATH}?adID=${key}`
-
-    fetch(api_url,)
-        .then(res => res.json())
-        .then(json => res.send(json))
-})
-
-server.get('/candidate/:id', function(req, res){
-
   const key = req.params.id
-  const api_url = `http://localhost:8080${pathProperties.CANDIDATE_CONTEXT_PATH}/${key}`
+  const api_url = 'http://localhost:8080' + pathProperties.AD_CONTEXT_PATH + key
 
   fetch(api_url,)
       .then(res => res.json())
       .then(json => res.send(json))
 })
 
-server.get('/hallo', (req,res) => {
-  res.send('Hello world')
+server.get('/candidate/:id', function(req, res){
+
+  const key = req.params.id
+  const api_url = 'http://localhost:8080' + pathProperties.CANDIDATE_CONTEXT_PATH + key
+
+  fetch(api_url,)
+      .then(res => res.json())
+      .then(json => res.send(json))
 })
 
 server.get('/', (req, res) => {
     res.redirect('/hallo')
 });
 
+server.get('/hallo', (req,res) => {
+  res.send('Hello world')
+})
+
 server.get(`/internal/isAlive`, (req, res) => res.sendStatus(200));
 server.get(`/internal/isReady`, (req, res) => res.sendStatus(200));
-
-
 
 server.listen(port, function () {
     console.log(`ExpressJS is running on port ${port}!`);

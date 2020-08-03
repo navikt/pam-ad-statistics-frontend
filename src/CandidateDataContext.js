@@ -10,7 +10,7 @@ export const CandidateDataProvider = props => {
     });
 
 
-    const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
+    const pathList = ('nav.no/kandidater/kandidat/PAM0yv5n54ll').split("/")
     const id = pathList.pop()
     const type = 'candidate'
 
