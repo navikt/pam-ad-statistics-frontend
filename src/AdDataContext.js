@@ -23,7 +23,7 @@ export const AdDataProvider = props => {
     useEffect(() => {
         const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
         const id = pathList.pop()
-        var type = pathList.pop()
+        var type = 'ad'
         const fetchData = async () => {
             const result = await axios(
             'http://localhost:9000/'+ type + '/' + id,
