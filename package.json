@@ -44,12 +44,12 @@
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
-    "babel-jest": "^26.2.2",
+    "babel-jest": "^24.9.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-15": "^1.4.1",
     "enzyme-adapter-react-16": "^1.15.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.2.2",
+    "jest": "^24.9.0",
     "json-loader": "^0.5.7",
     "react-test-renderer": "^15.6.2"
   },
@@ -63,7 +63,9 @@
     ]
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/src/__mocks__/styleMock.js"
     }

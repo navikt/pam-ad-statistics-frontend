@@ -27,7 +27,7 @@ export const AdProvider = props => {
     useEffect(() => {
     const fetchData = async () => {
         const result = await axios(
-        'http://localhost:9000/ad/' + path,
+        'http://localhost:8080/ad?adID=' + path,
         );
         setData(result.data);
     };
