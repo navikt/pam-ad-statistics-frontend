@@ -14,13 +14,15 @@ export const AdDataProvider = props => {
         "viewsPerDate": []
     });
 
+    console.log(data)
+
 
 
     //window.location.pathname
     //keep for using when not utilizing local host
 
     useEffect(() => {
-        const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
+        const pathList = ('nav.no/stillinger/stilling/0858d0d9-b8bd-4882-ae10-77f4fc8ec8ce').split("/")
         const id = pathList.pop()
         var type = 'ad'
         const fetchData = async () => {

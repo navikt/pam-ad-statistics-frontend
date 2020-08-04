@@ -11,7 +11,7 @@ server.set('port',port)
 const pathProperties = {
     AD_CONTEXT_PATH: 'ad?adID=',
     CANDIDATE_CONTEXT_PATH: 'candidate?candidateID=',
-    BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:8080',
+    BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:8080/',
     BACKEND_ENDPOINT: process.env.BACKEND_ENDPOINT || '/'
 }
 
@@ -26,13 +26,13 @@ server.use(cors({
   }
 }));
 
-console.log('BACKEND_ENDPOINT: ' + process.env.BACKEND_ENDPOINT )
-console.log('BACKEND_URL:  ' + process.env.BACKEND_URL)
+console.log('BACKEND_ENDPOINT: ' + pathProperties.BACKEND_ENDPOINT )
+console.log('BACKEND_URL:  ' + pathProperties.BACKEND_URL)
 
 
 server.get('/api/ad/:id', function(req, res){
   const key = req.params.id
-  const api_url = 'http://localhost:8080' + pathProperties.AD_CONTEXT_PATH + key
+  const api_url = 'http://localhost:8080/' + pathProperties.AD_CONTEXT_PATH + key
 
   fetch(api_url,)
       .then(res => res.json())
@@ -42,7 +42,7 @@ server.get('/api/ad/:id', function(req, res){
 server.get('/api/candidate/:id', function(req, res){
 
   const key = req.params.id
-  const api_url = 'http://localhost:8080' + pathProperties.CANDIDATE_CONTEXT_PATH + key
+  const api_url = 'http://localhost:8080/' + pathProperties.CANDIDATE_CONTEXT_PATH + key
 
   fetch(api_url,)
       .then(res => res.json())

@@ -9,6 +9,7 @@ export const CandidateDataProvider = props => {
         "pageViews": 0
     });
 
+    console.log(data)
 
  
 
@@ -17,7 +18,7 @@ export const CandidateDataProvider = props => {
     //keep for using when not utilizing local host
 
     useEffect(() => {
-        const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
+        const pathList = ('nav.no/stillinger/stilling/IK473409').split("/")
         const id = pathList.pop()
         const type = 'candidate'
         const fetchData = async () => {
