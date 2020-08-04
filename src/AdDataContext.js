@@ -14,20 +14,13 @@ export const AdDataProvider = props => {
         "viewsPerDate": []
     });
 
-    console.log(data)
-
-
-
-    //window.location.pathname
-    //keep for using when not utilizing local host
-
     useEffect(() => {
-        const pathList = ('nav.no/stillinger/stilling/0858d0d9-b8bd-4882-ae10-77f4fc8ec8ce').split("/")
-        const id = pathList.pop()
-        var type = 'ad'
+
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const id = urlSearchParams.get('adID');
         const fetchData = async () => {
             const result = await axios(
-            'http://localhost:9000/api/'+ type + '/' + id,
+            'http://localhost:9000/api/ad/' + id,
             );
             setData(result.data);
     };

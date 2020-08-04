@@ -9,21 +9,12 @@ export const CandidateDataProvider = props => {
         "pageViews": 0
     });
 
-    console.log(data)
-
- 
-
-
-    //window.location.pathname
-    //keep for using when not utilizing local host
-
     useEffect(() => {
-        const pathList = ('nav.no/stillinger/stilling/IK473409').split("/")
-        const id = pathList.pop()
-        const type = 'candidate'
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const id = parseInt(urlSearchParams.get('candidateID'));
         const fetchData = async () => {
             const result = await axios(
-            'http://localhost:9000/api/'+ type + '/' + id,
+            'http://localhost:9000/api/candidate/' + id,
             );
             setData(result.data);
     };
