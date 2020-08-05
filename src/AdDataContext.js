@@ -1,5 +1,5 @@
-import React, {useState, createContext, useEffect} from 'react';
-import axios from "axios";
+import React, { createContext, useEffect} from 'react';
+//import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchAdAction} from './store/AdActions'
 
@@ -21,12 +21,13 @@ export const AdDataProvider = props => {
    const dispatch = useDispatch()
 
     const data = useSelector(
-        (state) => state.AdReducer
-    )
+        (state) => {
+            return state.AdReducer
+        })
 
     useEffect (() => {
         dispatch(fetchAdAction())
-    }, []);
+    }, [dispatch])
 
     //window.location.pathname
     //keep for using when not utilizing local host
