@@ -9,23 +9,17 @@ const CandidateSearchHits = () => {
     useEffect (() => {
         dispatch(fetchCandidateAction())
     }, [dispatch]);
-    
-    const data = useSelector(
-        (state) => {
-            console.log(state.CandidateReducer)
-            return state.CandidateReducer
-        }
-    );
 
+    const data = useSelector((state) => state.CandidateReducer);
 
     return (
-        <div> {data.pageViews ? 
+        <div> {data.pageViews ?
             <React.Fragment>
                 <div className = "text-component__top-left"> {data.pageViews} </div>
                 <div className = "text-component__bot-left"> forekomster i kandidatsøk denne uken </div>
-            </React.Fragment> 
+            </React.Fragment>
             : null
-            } 
+            }
         </div>
     )
 

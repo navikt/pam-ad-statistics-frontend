@@ -47,9 +47,8 @@ server.get('/api/candidate/:id', function(req, res){
   fetch(api_url,)
       .then(res => res.json())
       .then(json => res.send(json))
-}) 
+})
 
-server.use('/', express.static(path.resolve(__dirname, 'build')));
 
 
 
@@ -73,6 +72,9 @@ server.use(
   }),
 );
 
+server.use('/static', express.static(path.resolve(__dirname, '../build', 'static')));
+server.use('/', express.static(path.resolve(__dirname, '../build')));
+server.use(['/candidate', '/ad'], (req, res) => res.sendFile(path.resolve(__dirname, '../build', 'index.html')));
 
 server.get(`/internal/isAlive`, (req, res) => res.sendStatus(200));
 server.get(`/internal/isReady`, (req, res) => res.sendStatus(200));

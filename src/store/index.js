@@ -9,12 +9,25 @@ import {CandidateSaga} from './CandidateReducer'
 
 
 export const Store = () => {
-    const saga = createReduxSaga()
-    const store = createStore(combineReducers({AdReducer, CandidateReducer}),composeWithDevTools(applyMiddleware(saga)))
+    const saga = createReduxSaga();
+
+    const store = createStore(
+        combineReducers({
+            AdReducer,
+            CandidateReducer
+        }),
+        composeWithDevTools(applyMiddleware(saga))
+    );
+
     function* rootSaga () {
-        yield all([spawn(AdSaga,CandidateSaga)])
+        yield all([
+            spawn(AdSaga),
+            spawn(CandidateSaga)
+        ])
     }
-    saga.run(rootSaga)
+
+    saga.run(rootSaga);
+
     return store
-}
+};
 
