@@ -1,9 +1,14 @@
-import React, { useContext } from 'react'
-import { CandidateDataContext } from '../../CandidateDataContext';
+import React from 'react'
+import { useSelector } from 'react-redux';
 
 const CandidateSearchHits = () => {
 
-    const {data} = useContext(CandidateDataContext);
+    const data = useSelector(
+        (state) => {
+            console.log(state.CandidateReducer)
+            return state.CandidateReducer
+        }
+    );
 
     return (
         <div> {data.pageViews ? 

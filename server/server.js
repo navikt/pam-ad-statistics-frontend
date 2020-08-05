@@ -38,7 +38,7 @@ server.get('/api/ad/:id', function(req, res){
       .then(res => res.json())
       .then(json => res.send(json))
 })
-/*
+
 server.get('/api/candidate/:id', function(req, res){
 
   const key = req.params.id
@@ -47,9 +47,9 @@ server.get('/api/candidate/:id', function(req, res){
   fetch(api_url,)
       .then(res => res.json())
       .then(json => res.send(json))
-}) */
+}) 
 
-server.use('/', express.static(path.resolve(__dirname, 'public')));
+server.use('/', express.static(path.resolve(__dirname, 'build')));
 
 
 
@@ -58,8 +58,7 @@ server.use(
   proxy(pathProperties.BACKEND_URL, {
       https: process.env.NODE_ENV !== 'development',
       proxyReqPathResolver: (req) => {
-        return `${pathProperties.BACKEND_ENDPOINT}${req.originalUrl.split('/api/ad/').pop()}`
-  
+        return `${req.originalUrl.split('/api/ad/').pop()}`
       }
   }),
 );
@@ -69,8 +68,7 @@ server.use(
   proxy(pathProperties.BACKEND_URL, {
       https: process.env.NODE_ENV !== 'development',
       proxyReqPathResolver: (req) => {
-        console.log(pathProperties.BACKEND_ENDPOINT + req.originalUrl.split('/api/candidate/').pop())
-        return `${pathProperties.BACKEND_ENDPOINT}${req.originalUrl.split('/api/candidate/').pop()}`
+        return `${req.originalUrl.split('/api/candidate/').pop()}`
       }
   }),
 );

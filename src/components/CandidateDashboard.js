@@ -1,14 +1,15 @@
 import React from 'react'
 import CandidateSearchHits from './DashboardComponents/CandidateSearchHits';
-import { CandidateDataProvider } from '../CandidateDataContext';
+import {CandidateStore} from '../store/index';
+import { Provider } from 'react-redux';
 
 const CandidateDashboard = () => {
 
     return (
 
-        <CandidateDataProvider>
+        <Provider store={CandidateStore()}>
             <CandidateSearchHits/>
-        </CandidateDataProvider>
+        </Provider>
 
     )
 

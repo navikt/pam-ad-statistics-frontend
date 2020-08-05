@@ -23,6 +23,7 @@ export const AdDataProvider = props => {
 
     const data = useSelector(
         (state) => {
+            console.log(state.AdReducer)
             return state.AdReducer
         })
 

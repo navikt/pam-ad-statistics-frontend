@@ -1,7 +1,5 @@
-import React, {useState, createContext, useEffect} from 'react';
-import axios from "axios";
+import React, { createContext, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import CandidateReducer from './store/CandidateReducer'
 import { fetchCandidateAction } from './store/CandidateActions';
 
 export const CandidateDataContext = createContext({});
@@ -20,7 +18,7 @@ export const CandidateDataProvider = props => {
  
     useEffect(()=> {
         dispatch(fetchCandidateAction())
-    }, []);
+    }, [dispatch]);
 
     /*
     useEffect(() => {

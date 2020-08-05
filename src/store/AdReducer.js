@@ -1,5 +1,5 @@
 import {FETCH_AD,FETCH_AD_FAILURE,FETCH_AD_SUCCESS, fetchAdSuccessAction, fetchAdFailureAction} from './AdActions'
-import { takeLatest, takeEvery, call, put } from 'redux-saga/effects'
+import { takeEvery, call, put } from 'redux-saga/effects'
 import axios from 'axios'
 
 
@@ -41,6 +41,7 @@ function* fetchAd(){
     try {
 
         const result = yield call(fetchData)
+        console.log(result)
         yield put(fetchAdSuccessAction(result.data))
     } catch (error) {
         console.log(error)

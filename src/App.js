@@ -2,13 +2,10 @@ import React from 'react';
 import './App.css';
 import CompanyDashboard from './components/CompanyDashboard';
 import CandidateDashboard from './components/CandidateDashboard';
-import { Provider } from 'react-redux';
-import AdStore from './store';
 
 function App() {
 
   return (
-    <Provider store={AdStore()}>
       <div className="App">
 
         <div className = "dashboard_company">
@@ -22,12 +19,7 @@ function App() {
         </div>
 
       </div>
-    </Provider>
   );
 }
 
 export default App;
-
-/*
-
-*/

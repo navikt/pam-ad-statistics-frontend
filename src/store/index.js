@@ -5,17 +5,26 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import createReduxSaga from 'redux-saga'
 import {all, spawn} from 'redux-saga/effects'
 import {AdSaga} from './AdReducer'
+import {CandidateSaga} from './CandidateReducer'
 
 
-const AdStore = () => {
+export const AdStore = () => {
     const saga = createReduxSaga()
-    const store = createStore(combineReducers({AdReducer, CandidateReducer}),composeWithDevTools(applyMiddleware(saga)))
+    const AdStore = createStore(combineReducers({AdReducer, CandidateReducer}),composeWithDevTools(applyMiddleware(saga)))
     function* rootSaga () {
         yield all([spawn(AdSaga)])
     }
     saga.run(rootSaga)
-    return store
+    return AdStore
 }
 
+export const CandidateStore = () => {
+    const saga = createReduxSaga()
+    const CandidateStore = createStore(combineReducers({AdReducer, CandidateReducer}),composeWithDevTools(applyMiddleware(saga)))
+    function* rootSaga () {
+        yield all([spawn(CandidateSaga)])
+    }
+    saga.run(rootSaga)
+    return CandidateStore
+}
 
-export default AdStore;

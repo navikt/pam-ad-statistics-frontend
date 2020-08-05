@@ -1,15 +1,16 @@
 import React from 'react'
 import AverageChart from './DashboardComponents/AverageChart';
-import {AdDataProvider} from '../AdDataContext';
 import TotalPageViews from './DashboardComponents/TotalPageViews'
 import '../App.css';
 import ChartButton from './DashboardComponents/ChartButton';
+import { Provider } from 'react-redux';
+import {AdStore} from '../store/index';
 
 export const Dashboard = () => {
 
   
     return (
-        <AdDataProvider>
+        <Provider store={AdStore()}>
             <div className = "dashboard">
 
                 <div className = "text-components">
@@ -24,7 +25,7 @@ export const Dashboard = () => {
                 <ChartButton/>
 
             </div>
-        </AdDataProvider>
+        </Provider>
     );
   }
   
