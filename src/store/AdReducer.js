@@ -33,7 +33,7 @@ export function* AdSaga() {
 const fetchData = async () => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const id = urlSearchParams.get('adID');
-    return await axios(`http://localhost:9000/api/ad/${id}`)
+    return await axios(`http://localhost:9000/api/ad?adID=${id}`)
 };
 
 function* fetchAd() {

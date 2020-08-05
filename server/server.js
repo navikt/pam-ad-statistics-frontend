@@ -1,10 +1,11 @@
-var express = require('express');
-var server = express();
-const port = 9000;
+const express = require('express');
+const server = express();
 const fetch = require('node-fetch');
-var cors = require('cors');
+const cors = require('cors');
 const path = require('path');
-const proxy = require('express-http-proxy');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+const port = 9000;
 
 server.set('port',port)
 
@@ -20,6 +21,7 @@ server.use(cors({
   origin: function(origin, callback){
     if(!origin) return callback(null, true);
     if(allowedOrigins.indexOf(origin) === -1){
+        console.log("NOT ALLOWED")
       return callback(new Error(msg), false);
     }
     return callback(null, true);
@@ -30,47 +32,17 @@ console.log('BACKEND_ENDPOINT: ' + pathProperties.BACKEND_ENDPOINT )
 console.log('BACKEND_URL:  ' + pathProperties.BACKEND_URL)
 
 
-server.get('/api/ad/:id', function(req, res){
-  const key = req.params.id
-  const api_url = 'http://localhost:8080/' + pathProperties.AD_CONTEXT_PATH + key
+const adProxy = createProxyMiddleware('/api/ad', {
+    target: `${pathProperties.BACKEND_URL}`,
+    pathRewrite: {'^/api/ad': '/ad'}
+});
+const candidateProxy = createProxyMiddleware('/api/candidate', {
+    target: `${pathProperties.BACKEND_URL}`,
+    pathRewrite: {'^/api/candidate': '/candidate'},
+});
 
-  fetch(api_url,)
-      .then(res => res.json())
-      .then(json => res.send(json))
-})
-
-server.get('/api/candidate/:id', function(req, res){
-
-  const key = req.params.id
-  const api_url = 'http://localhost:8080/' + pathProperties.CANDIDATE_CONTEXT_PATH + key
-
-  fetch(api_url,)
-      .then(res => res.json())
-      .then(json => res.send(json))
-})
-
-
-
-
-server.use(
-  '/api/ad',
-  proxy(pathProperties.BACKEND_URL, {
-      https: process.env.NODE_ENV !== 'development',
-      proxyReqPathResolver: (req) => {
-        return `${req.originalUrl.split('/api/ad/').pop()}`
-      }
-  }),
-);
-
-server.use(
-  '/api/candidate',
-  proxy(pathProperties.BACKEND_URL, {
-      https: process.env.NODE_ENV !== 'development',
-      proxyReqPathResolver: (req) => {
-        return `${req.originalUrl.split('/api/candidate/').pop()}`
-      }
-  }),
-);
+server.use(adProxy);
+server.use(candidateProxy);
 
 server.use('/static', express.static(path.resolve(__dirname, '../build', 'static')));
 server.use('/', express.static(path.resolve(__dirname, '../build')));

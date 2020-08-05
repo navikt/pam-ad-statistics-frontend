@@ -26,7 +26,7 @@ export function* CandidateSaga() {
 const fetchData = async () => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const id = urlSearchParams.get('candidateID');
-    return await axios(`http://localhost:9000/api/candidate/${id}`);
+    return await axios(`http://localhost:9000/api/candidate?candidateID=${id}`);
 };
 
 function* fetchCandidate(){
