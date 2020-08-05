@@ -4,13 +4,13 @@ import TotalPageViews from './DashboardComponents/TotalPageViews'
 import '../App.css';
 import ChartButton from './DashboardComponents/ChartButton';
 import { Provider } from 'react-redux';
-import {AdStore} from '../store/index';
+import {Store} from '../store/index';
 
 export const Dashboard = () => {
 
   
     return (
-        <Provider store={AdStore()}>
+        <Provider store={Store()}>
             <div className = "dashboard">
 
                 <div className = "text-components">
