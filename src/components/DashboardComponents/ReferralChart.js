@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
 import Chart from "react-apexcharts";
-import {AdContext} from '../../AdContext';
+import {AdDataContext} from '../../AdDataContext';
 
 const ReferralChart = () => {
 
-  const { data } = useContext(AdContext);
+  const { data } = useContext(AdDataContext);
   const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
 
 
@@ -18,13 +18,13 @@ const ReferralChart = () => {
         }
   
     var accValue = list.filter(referal =>
-                referal.path === 'nav.no')
+                referal.path.includes('nav.no'))
                 .reduce(function(_this, val) {
                   return _this + val.views
               }, 0);
 
     list = list.filter(element =>
-      element.path !== 'nav.no')
+      !element.path.includes('nav.no'))
 
     list.push({'path': 'nav.no', 'views': accValue})
 

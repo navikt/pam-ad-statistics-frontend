@@ -1,7 +1,7 @@
 import React from 'react'
-import AverageChart from './DashboardComponents/AverageChart.js';
-import {AdProvider} from '../AdContext';
-import TotalPageViews from './DashboardComponents/TotalPageViews.js'
+import AverageChart from './DashboardComponents/AverageChart';
+import {AdDataProvider} from '../AdDataContext';
+import TotalPageViews from './DashboardComponents/TotalPageViews'
 import '../App.css';
 import ChartButton from './DashboardComponents/ChartButton.js';
 
@@ -9,7 +9,7 @@ export const Dashboard = () => {
 
   
     return (
-        <AdProvider>
+        <AdDataProvider>
             <div className = "dashboard">
 
                 <div className = "text-components">
@@ -24,7 +24,7 @@ export const Dashboard = () => {
                 <ChartButton/>
 
             </div>
-        </AdProvider>
+        </AdDataProvider>
     );
   }
   
