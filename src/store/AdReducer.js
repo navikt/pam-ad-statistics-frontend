@@ -1,5 +1,6 @@
-import {FETCH_AD,FETCH_AD_FAILURE,FETCH_AD_SUCCESS} from './AdActions'
-import { takeLatest, takeEvery } from 'redux-saga/effects'
+import {FETCH_AD,FETCH_AD_FAILURE,FETCH_AD_SUCCESS, fetchAdSuccessAction, fetchAdFailureAction} from './AdActions'
+import { takeLatest, takeEvery, call, put } from 'redux-saga/effects'
+import axios from 'axios'
 
 
 const initState = {
@@ -29,14 +30,23 @@ export function* AdSaga() {
     yield takeEvery(FETCH_AD, fetchAd)
 }
 
+const fetchData = async () => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const id = urlSearchParams.get('adID');
+    return await axios(
+    'http://localhost:9000/api/ad/' + id
+    )};
+
 function* fetchAd(){
-    const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
-    const id = pathList.pop()
-    var type = 'ad'
-    const fetchData = async () => {
-        const result = await axios(
-        'http://localhost:9000/'+ type + '/' + id,
-        )
-}
+    try {
+
+        const result = yield call(fetchData)
+        yield put(fetchAdSuccessAction(result.data))
+    } catch (error) {
+        console.log(error)
+        yield put(fetchAdFailureAction())
+    }
+
+    };
 
 export default AdReducer;

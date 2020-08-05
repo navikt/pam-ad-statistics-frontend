@@ -20,6 +20,7 @@ export const AdDataProvider = props => {
     */
    const dispatch = useDispatch()
 
+
     const data = useSelector(
         (state) => {
             return state.AdReducer
@@ -29,17 +30,15 @@ export const AdDataProvider = props => {
         dispatch(fetchAdAction())
     }, [dispatch])
 
-    //window.location.pathname
-    //keep for using when not utilizing local host
 
     /*
     useEffect(() => {
-        const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
-        const id = pathList.pop()
-        var type = 'ad'
+
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const id = urlSearchParams.get('adID');
         const fetchData = async () => {
             const result = await axios(
-            'http://localhost:9000/'+ type + '/' + id,
+            'http://localhost:9000/api/ad/' + id,
             );
             setData(result.data);
     };

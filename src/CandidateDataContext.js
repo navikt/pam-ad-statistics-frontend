@@ -12,7 +12,6 @@ export const CandidateDataProvider = props => {
 
     const data = useSelector(
         (state) => {
-            console.log(state.CandidateReducer)
             return state.CandidateReducer 
         }
     );
@@ -23,16 +22,13 @@ export const CandidateDataProvider = props => {
         dispatch(fetchCandidateAction())
     }, []);
 
-    //window.location.pathname
-    //keep for using when not utilizing local host
     /*
     useEffect(() => {
-        const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
-        const id = pathList.pop()
-        const type = 'candidate'
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const id = parseInt(urlSearchParams.get('candidateID'));
         const fetchData = async () => {
             const result = await axios(
-            'http://localhost:9000/'+ type + '/' + id,
+            'http://localhost:9000/api/candidate/' + id,
             );
             setData(result.data);
     };

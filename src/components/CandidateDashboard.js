@@ -1,10 +1,15 @@
 import React from 'react'
 import CandidateSearchHits from './DashboardComponents/CandidateSearchHits';
+import { CandidateDataProvider } from '../CandidateDataContext';
 
 const CandidateDashboard = () => {
 
     return (
-        <CandidateSearchHits/>
+
+        <CandidateDataProvider>
+            <CandidateSearchHits/>
+        </CandidateDataProvider>
+
     )
 
 };

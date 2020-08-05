@@ -3,12 +3,16 @@ var server = express();
 const port = 9000;
 const fetch = require('node-fetch');
 var cors = require('cors');
+const path = require('path');
+const proxy = require('express-http-proxy');
 
 server.set('port',port)
 
 const pathProperties = {
-    AD_CONTEXT_PATH: '/ad',
-    CANDIDATE_CONTEXT_PATH: '/candidate'
+    AD_CONTEXT_PATH: 'ad?adID=',
+    CANDIDATE_CONTEXT_PATH: 'candidate?candidateID=',
+    BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:8080/',
+    BACKEND_ENDPOINT: process.env.BACKEND_ENDPOINT || '/'
 }
 
 var allowedOrigins = 'http://localhost:3000';
@@ -22,39 +26,59 @@ server.use(cors({
   }
 }));
 
-server.get('/ad/:id', function(req, res){
+console.log('BACKEND_ENDPOINT: ' + pathProperties.BACKEND_ENDPOINT )
+console.log('BACKEND_URL:  ' + pathProperties.BACKEND_URL)
 
-    const key = req.params.id
-    const api_url = `http://localhost:8080${pathProperties.AD_CONTEXT_PATH}?adID=${key}`
 
-    fetch(api_url,)
-        .then(res => res.json())
-        .then(json => res.send(json))
-})
-
-server.get('/candidate/:id', function(req, res){
-
+server.get('/api/ad/:id', function(req, res){
   const key = req.params.id
-  const api_url = `http://localhost:8080${pathProperties.CANDIDATE_CONTEXT_PATH}/${key}`
+  const api_url = 'http://localhost:8080/' + pathProperties.AD_CONTEXT_PATH + key
 
   fetch(api_url,)
       .then(res => res.json())
       .then(json => res.send(json))
 })
+/*
+server.get('/api/candidate/:id', function(req, res){
 
-server.get('/hallo', (req,res) => {
-  res.send('Hello world')
-})
+  const key = req.params.id
+  const api_url = 'http://localhost:8080/' + pathProperties.CANDIDATE_CONTEXT_PATH + key
 
-server.get('/', (req, res) => {
-    res.redirect('/hallo')
-});
+  fetch(api_url,)
+      .then(res => res.json())
+      .then(json => res.send(json))
+}) */
+
+server.use('/', express.static(path.resolve(__dirname, 'public')));
+
+
+
+server.use(
+  '/api/ad',
+  proxy(pathProperties.BACKEND_URL, {
+      https: process.env.NODE_ENV !== 'development',
+      proxyReqPathResolver: (req) => {
+        return `${pathProperties.BACKEND_ENDPOINT}${req.originalUrl.split('/api/ad/').pop()}`
+  
+      }
+  }),
+);
+
+server.use(
+  '/api/candidate',
+  proxy(pathProperties.BACKEND_URL, {
+      https: process.env.NODE_ENV !== 'development',
+      proxyReqPathResolver: (req) => {
+        console.log(pathProperties.BACKEND_ENDPOINT + req.originalUrl.split('/api/candidate/').pop())
+        return `${pathProperties.BACKEND_ENDPOINT}${req.originalUrl.split('/api/candidate/').pop()}`
+      }
+  }),
+);
+
 
 server.get(`/internal/isAlive`, (req, res) => res.sendStatus(200));
 server.get(`/internal/isReady`, (req, res) => res.sendStatus(200));
 
-
-
-server.listen(port, function () {
-    console.log(`ExpressJS is running on port ${port}!`);
+server.listen(port, () => {
+  console.log('Server listening on port', port);
 });

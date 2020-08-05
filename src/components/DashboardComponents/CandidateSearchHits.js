@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CandidateDataContext } from '../../CandidateDataContext';
 
 const CandidateSearchHits = () => {
 
-    var hits = 5;
+    const {data} = useContext(CandidateDataContext);
 
     return (
-        <div> {hits ? 
+        <div> {data.pageViews ? 
             <React.Fragment>
-                <div className = "text-component__top-left"> {hits} </div>
+                <div className = "text-component__top-left"> {data.pageViews} </div>
                 <div className = "text-component__bot-left"> forekomster i kandidatsøk denne uken </div>
             </React.Fragment> 
             : null

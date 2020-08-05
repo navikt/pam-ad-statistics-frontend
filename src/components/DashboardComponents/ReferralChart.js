@@ -18,13 +18,13 @@ const ReferralChart = () => {
         }
   
     var accValue = list.filter(referal =>
-                referal.path === 'nav.no')
+                referal.path.includes('nav.no'))
                 .reduce(function(_this, val) {
                   return _this + val.views
               }, 0);
 
     list = list.filter(element =>
-      element.path !== 'nav.no')
+      !element.path.includes('nav.no'))
 
     list.push({'path': 'nav.no', 'views': accValue})
 
