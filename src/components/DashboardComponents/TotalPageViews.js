@@ -6,8 +6,6 @@ const TotalPageviews = () => {
 
     const { data } = useContext(AdDataContext);
 
-    console.log()
-
 
     return(
         <div className = "text-component">
