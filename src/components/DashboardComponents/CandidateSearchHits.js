@@ -1,14 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchCandidateAction} from '../../store/CandidateActions'
 
 const CandidateSearchHits = () => {
 
+    const dispatch = useDispatch()
+
+    useEffect (() => {
+        dispatch(fetchCandidateAction())
+    }, [dispatch]);
+    
     const data = useSelector(
         (state) => {
             console.log(state.CandidateReducer)
             return state.CandidateReducer
         }
     );
+
 
     return (
         <div> {data.pageViews ? 

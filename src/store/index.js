@@ -10,11 +10,11 @@ import {CandidateSaga} from './CandidateReducer'
 
 export const Store = () => {
     const saga = createReduxSaga()
-    const Store = createStore(combineReducers({AdReducer, CandidateReducer}),composeWithDevTools(applyMiddleware(saga)))
+    const store = createStore(combineReducers({AdReducer, CandidateReducer}),composeWithDevTools(applyMiddleware(saga)))
     function* rootSaga () {
         yield all([spawn(AdSaga,CandidateSaga)])
     }
     saga.run(rootSaga)
-    return Store
+    return store
 }
 
