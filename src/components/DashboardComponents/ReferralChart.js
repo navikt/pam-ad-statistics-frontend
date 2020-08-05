@@ -1,10 +1,14 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Chart from "react-apexcharts";
-import {AdDataContext} from '../../AdDataContext';
+import { useSelector } from 'react-redux';
 
 const ReferralChart = () => {
 
-  const { data } = useContext(AdDataContext);
+  const data = useSelector(
+    (state) => {
+        return state.AdReducer
+    }
+  );
   const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
 
 
