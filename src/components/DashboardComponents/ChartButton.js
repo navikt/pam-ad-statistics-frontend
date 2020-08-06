@@ -21,7 +21,7 @@ const ChartButton = () => {
 
     return (
     <div>
-        <button id = "chart-button" onClick = {toggleHidden}>Din oversikt</button>
+        <button className={`chart-button ${showCharts ? 'checked' : ''}`} onClick={toggleHidden}>Din oversikt</button>
         {showCharts ? charts() : null }
     </div>
     );

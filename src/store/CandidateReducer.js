@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const initState = {
     pageViews: 0
-}
+};
 
 const CandidateReducer = (state = initState, action) => {
     switch(action.type){
@@ -17,7 +17,7 @@ const CandidateReducer = (state = initState, action) => {
         default:
             return state
     }
-}
+};
 
 export function* CandidateSaga() {
     yield takeEvery(FETCH_CANDIDATE, fetchCandidate)
@@ -26,20 +26,17 @@ export function* CandidateSaga() {
 const fetchData = async () => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const id = urlSearchParams.get('candidateID');
-    return await axios(
-    'http://localhost:9000/api/candidate/' + id
-    )};
+    return await axios(`http://localhost:9000/api/candidate?candidateID=${id}`);
+};
 
 function* fetchCandidate(){
     try {
-
-        const result = yield call(fetchData)
+        const result = yield call(fetchData);
         yield put(fetchCandidateSuccessAction(result.data))
     } catch (error) {
-        console.log(error)
+        console.log(error);
         yield put(fetchCandidateFailureAction())
     }
-
-    };
+}
 
 export default CandidateReducer;

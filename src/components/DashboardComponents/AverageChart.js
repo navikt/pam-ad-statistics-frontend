@@ -1,27 +1,29 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {fetchAdAction} from "../../store/AdActions";
 
 const AverageChart = () => {
 
-  const data = useSelector(
-    (state) => {
-        return state.AdReducer
-    }
-);
+  const data = useSelector((state) => state.AdReducer);
+  const dispatch = useDispatch();
 
-  const averageTimeOnPage = data.averageTimeOnPage
-  
-  var totalTimeOnPage = data.averageTimeOnPage.reduce((acc, val)=>
-  acc + val)
+  useEffect(() => {
+    dispatch(fetchAdAction())
+  }, [dispatch])
 
-  const totalAverage = totalTimeOnPage/averageTimeOnPage.length
 
-  var minute = Math.floor(totalAverage / 60)
-  var seconds = Math.floor(totalAverage - minute * 60)
+  const averageTimeOnPage = data.averageTimeOnPage;
+
+  var totalTimeOnPage = data.averageTimeOnPage.reduce((acc, val)=> acc + val);
+
+  const totalAverage = totalTimeOnPage/averageTimeOnPage.length;
+
+  var minute = Math.floor(totalAverage / 60);
+  var seconds = Math.floor(totalAverage - minute * 60);
 
   return(
     <div className = "text-component">
-      {minute === 0 ? 
+      {minute === 0 ?
       ( <div className = "text-component__top-right">{seconds} sek</div> ) :
       ( <div className = "text-component__top-right">{minute} m {seconds} sek</div> )
       }
