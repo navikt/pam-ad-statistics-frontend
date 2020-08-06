@@ -6,8 +6,6 @@ const AverageChart = () => {
 
   const { data } = useContext(AdDataContext);
 
-  const averageTimeOnPage = data.averageTimeOnPage
-
   var totalTimeOnPage = data.averageTimeOnPage.reduce((acc, val, idx) => {
         return acc + val*(data.viewsPerReferral[idx])
     }, 0)
