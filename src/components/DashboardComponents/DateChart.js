@@ -1,14 +1,18 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Chart from "react-apexcharts";
-import {AdDataContext} from '../../AdDataContext'
+import { useSelector } from 'react-redux';
 
 const DateChart = () => {
 
-  const { data } = useContext(AdDataContext);
+  const data = useSelector(
+    (state) => {
+        return state.AdReducer
+    }
+);
 
 
   const dateify = (date) => {
-    return date.slice(6,8) +'.'+ date.slice(4,6) +'.'+ date.slice(0,4)
+    return date.slice(6,8) +'.'+ date.slice(4,6)
   }
 
   const dates = data.dates.map(date =>

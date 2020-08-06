@@ -1,12 +1,13 @@
-import React, {useContext} from 'react'
-import {AdDataContext} from '../../AdDataContext'
-
+import React from 'react'
+import {useSelector} from 'react-redux'
 
 const TotalPageviews = () => {
 
-    const { data } = useContext(AdDataContext);
-
-    console.log()
+    const data = useSelector(
+        (state) => {
+            return state.AdReducer
+        }
+    );
 
 
     return(

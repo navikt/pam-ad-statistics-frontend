@@ -1,17 +1,25 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchCandidateAction} from '../../store/CandidateActions'
 
 const CandidateSearchHits = () => {
 
-    var hits = 5;
+    const dispatch = useDispatch()
+
+    useEffect (() => {
+        dispatch(fetchCandidateAction())
+    }, [dispatch]);
+
+    const data = useSelector((state) => state.CandidateReducer);
 
     return (
-        <div> {hits ? 
+        <div> {data.pageViews ?
             <React.Fragment>
-                <div className = "text-component__top-left"> {hits} </div>
+                <div className = "text-component__top-left"> {data.pageViews} </div>
                 <div className = "text-component__bot-left"> forekomster i kandidatsøk denne uken </div>
-            </React.Fragment> 
+            </React.Fragment>
             : null
-            } 
+            }
         </div>
     )
 

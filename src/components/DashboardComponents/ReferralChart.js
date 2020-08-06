@@ -1,10 +1,14 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Chart from "react-apexcharts";
-import {AdDataContext} from '../../AdDataContext';
+import { useSelector } from 'react-redux';
 
 const ReferralChart = () => {
 
-  const { data } = useContext(AdDataContext);
+  const data = useSelector(
+    (state) => {
+        return state.AdReducer
+    }
+  );
   const shortenedReferrals = data.referrals.map(e => e.split('/')[0]);
 
 
@@ -18,13 +22,13 @@ const ReferralChart = () => {
         }
   
     var accValue = list.filter(referal =>
-                referal.path === 'nav.no')
+                referal.path.includes('nav.no'))
                 .reduce(function(_this, val) {
                   return _this + val.views
               }, 0);
 
     list = list.filter(element =>
-      element.path !== 'nav.no')
+      !element.path.includes('nav.no'))
 
     list.push({'path': 'nav.no', 'views': accValue})
 

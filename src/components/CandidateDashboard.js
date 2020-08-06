@@ -4,7 +4,9 @@ import CandidateSearchHits from './DashboardComponents/CandidateSearchHits';
 const CandidateDashboard = () => {
 
     return (
-        <CandidateSearchHits/>
+
+            <CandidateSearchHits/>
+
     )
 
 };

@@ -35,17 +35,44 @@
   font-size: 1rem;
 }
 
-#chart-button {
+.chart-button {
   background-color: #C8F0E1;
   border: none;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
   padding: 16px;
   padding-left: 10px;
   width: 100%;
   min-height: 100%;
   font-size: 1.25rem;
+
+
+  border-radius: 5px;
+  display: block;
+  margin: 10% auto 5%;
+  position: relative;
 }
+
+.chart-button::after {
+  content: '';
+  position: relative;
+  width: .5em;
+  height: .5em;
+  border-right: .1em solid #000;
+  border-bottom: .1em solid #000;
+  transform: rotate(45deg);
+  transition: transform 500ms ease-in-out;
+  display: inline-block;
+  top: -.2rem;
+  margin-left: 2rem;
+}
+
+.chart-button.checked::after {
+  transform: rotate(-135deg) translate(-.3rem, -.1rem);
+  transition: transform 500ms ease-in-out;
+  position: relative;
+}
+
 
 .text-components {
   display: flex;
