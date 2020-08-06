@@ -17,7 +17,7 @@ export const CandidateDataProvider = props => {
     //keep for using when not utilizing local host
 
     useEffect(() => {
-        const pathList = ('nav.no/stillinger/stilling/d1508053-0982-401d-985d-e9660d2a0cbc').split("/")
+        const pathList = ('nav.no/stillinger/stilling/66480c7a-4a3a-45ce-9781-b0832c0145ca').split("/")
         const id = pathList.pop()
         const type = 'candidate'
         const fetchData = async () => {
